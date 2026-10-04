@@ -1,4 +1,5 @@
 pub mod args;
+pub mod version;
 pub mod bench;
 mod frame_owner;
 mod launch;

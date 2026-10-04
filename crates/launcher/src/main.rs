@@ -52,4 +52,7 @@ fn prepare_process_root() -> Result<(), String> {
 fn announce_log(path: PathBuf) {
     diag::announce_log_stdout(&path, diag::latest_log_path().as_deref());
     diag::info!(Launch, "log: {}", path.display());
+    // Which binary wrote this log. Without it a log cannot be tied back to the
+    // build that produced it, which costs real time when several exist.
+    diag::info!(Launch, "{}", bootstrap::version::build_line());
 }
